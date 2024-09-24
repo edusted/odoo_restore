@@ -1,0 +1,15 @@
+<odoo>
+   
+    <menuitem id="menu_logistics_root" name="Logistics" sequence="1"/>
+
+    
+    <menuitem id="menu_logistics_transport" name="Transport Requests" parent="menu_logistics_root" sequence="10"/>
+    
+    
+    <menuitem id="menu_transport_requests" name="Requests" parent="menu_logistics_transport" action="action_transport_request" sequence="11"/>
+    <menuitem id="menu_logistics_configuration" name="Configuration" parent="menu_logistics_root" sequence="20"/>    
+    <menuitem id="menu_request_types" name="Request Types" parent="menu_logistics_configuration" action="action_request_type" sequence="21"/>
+    <menuitem id="menu_packaging_types" name="Packaging Types" parent="menu_logistics_configuration" action="action_packaging_type" sequence="22"/>
+    <menuitem id="menu_expense_categories" name="Expense Categories" parent="menu_logistics_configuration" action="action_expense_category" sequence="23"/>
+    <menuitem id="menu_priority_types" name="Priority Types" parent="menu_logistics_configuration" action="action_priority_type" sequence="24"/>
+</odoo>

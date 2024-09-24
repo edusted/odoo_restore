@@ -1,0 +1,37 @@
+<odoo>
+    
+    <record id="view_expense_category_form" model="ir.ui.view">
+        <field name="name">expense.category.form</field>
+        <field name="model">logistics.expense_category</field>
+        <field name="arch" type="xml">
+            <form string="Expense Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+   
+    <record id="view_expense_category_tree" model="ir.ui.view">
+        <field name="name">expense.category.tree</field>
+        <field name="model">logistics.expense_category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    
+    <record id="action_expense_category" model="ir.actions.act_window">
+        <field name="name">Expense Categories</field>
+        <field name="res_model">logistics.expense_category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    
+    <menuitem id="menu_logistics_expense_category" parent="menu_logistics_configuration" name="Expense Categories" action="action_expense_category"/>
+</odoo>
