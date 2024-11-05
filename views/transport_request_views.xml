@@ -1,45 +1,49 @@
 <odoo>
-    <record id="view_transport_request_form" model="ir.ui.view">
-        <field name="name">transport.request.form</field>
+    <!-- Kanban View -->
+    <record id="view_transport_request_kanban" model="ir.ui.view">
+        <field name="name">transport.request.kanban</field>
         <field name="model">logistics.transport_request</field>
         <field name="arch" type="xml">
-            <form string="Transport Request">
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="request_type"/>
-                        <field name="sender_id"/>
-                        <field name="receiver_id"/>
-                        <field name="responsible_manager_id"/>
-                        <field name="state" widget="statusbar"/>
-                        <field name="package_type_id"/>
-                        <field name="package_qty"/>
-                        <field name="priority_id"/>
-                    </group>
-                    <group>
-                        <field name="total_weight" readonly="1"/>
-                        <field name="total_volume" readonly="1"/>
-                    </group>
-                    <notebook>
-                        <page string="Items">
-                            <!-- Удалено line_ids и связанные поля -->
-                        </page>
-                    </notebook>
-                </sheet>
-                <footer>
-                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary" states="draft"/>
-                    <button name="action_cancel" type="object" string="Cancel" class="btn-secondary" states="confirmed"/>
-                </footer>
-            </form>
+            <kanban>
+                <!-- Specify fields available in the view -->
+                <field name="name"/>
+                <field name="request_type"/>
+                <field name="sender_id"/>
+                <field name="receiver_id"/>
+                <field name="package_type_id"/>
+                <field name="priority_id"/>
+                <field name="total_weight"/>
+                <field name="total_volume"/>
+
+                <!-- Template for displaying cards -->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_card">
+                            <div class="o_kanban_primary_bottom">
+                                <strong><field name="name"/></strong>
+                            </div>
+                            <div><b>Request Type:</b> <field name="request_type"/></div>
+                            <div><b>Sender:</b> <field name="sender_id"/></div>
+                            <div><b>Receiver:</b> <field name="receiver_id"/></div>
+                            <div><b>Package Type:</b> <field name="package_type_id"/></div>
+                            <div><b>Priority:</b> <field name="priority_id"/></div>
+                            <div><b>Total Weight:</b> <field name="total_weight"/> kg</div>
+                            <div><b>Total Volume:</b> <field name="total_volume"/> m³</div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
         </field>
     </record>
 
+    <!-- Action to open the Kanban View -->
     <record id="action_transport_request" model="ir.actions.act_window">
         <field name="name">Transport Requests</field>
         <field name="res_model">logistics.transport_request</field>
-        <field name="view_mode">tree,form,kanban</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_transport_request_kanban"/>
     </record>
 
-    <menuitem id="menu_logistics_transport_requests" parent="menu_logistics_root" name="Transport Requests" action="action_transport_request"/>
+    <!-- Menu Item -->
+     <menuitem id="menu_logistics_transport_requests" parent="menu_logistics_root" name="Transport Requests" action="action_transport_request"/>
 </odoo>
-
