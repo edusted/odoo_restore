@@ -33,5 +33,5 @@
     </record>
 
     
-    <menuitem id="menu_logistics_priority_type" parent="menu_logistics_configuration" name="Priority Types" action="action_priority_type"/>
+
 </odoo>

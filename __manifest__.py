@@ -7,7 +7,7 @@
     """,
     'author': 'Eduard Stsiablou',
     'category': 'Logistics',
-    'depends': ['base', 'sale', 'hr', 'stock'],
+    'depends': ['base', 'sale', 'hr', 'stock', 'contacts',],
     'data': [
         'security/ir.model.access.csv',
         'views/transport_request_views.xml',
@@ -15,6 +15,7 @@
         'views/packaging_type_views.xml',
         'views/expense_category_views.xml',
         'views/priority_type_views.xml',
+        'views/product_views.xml',
         'views/menu_views.xml'
 
     ],

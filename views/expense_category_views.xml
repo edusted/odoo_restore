@@ -8,6 +8,8 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="cost_exp"/>
+                        <field name="comments_exp"/>
                     </group>
                 </sheet>
             </form>
@@ -21,6 +23,8 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
+                <field name="cost_exp"/>
+                <field name="comments_exp"/>
             </tree>
         </field>
     </record>
@@ -33,5 +37,5 @@
     </record>
 
     
-    <menuitem id="menu_logistics_expense_category" parent="menu_logistics_configuration" name="Expense Categories" action="action_expense_category"/>
+
 </odoo>

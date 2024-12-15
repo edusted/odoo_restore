@@ -1,6 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_transport_request_manager,access.transport.request,model_logistics_transport_request,base.group_system,1,1,1,1
-access_request_type_manager,access.request_type,model_logistics_request_type,base.group_system,1,1,1,1
-access_packaging_type_manager,access.packaging_type,model_logistics_packaging_type,base.group_system,1,1,1,1
-access_expense_category_manager,access.expense_category,model_logistics_expense_category,base.group_system,1,1,1,1
-access_priority_type_manager,access.priority_type,model_logistics_priority_type,base.group_system,1,1,1,1
+access_transport_request_user,access_transport_request_user,model_logistics_transport_request,base.group_user,1,1,1,1
+access_priority_type_user,access_priority_type_user,model_logistics_priority_type,base.group_user,1,1,1,1
+access_packaging_type_user,access_packaging_type_user,model_logistics_packaging_type,base.group_user,1,1,1,1
+access_expense_category_user,access_expense_category_user,model_logistics_expense_category,base.group_user,1,1,1,1
+access_request_type_user,access_request_type_user,model_logistics_request_type,base.group_user,1,1,1,1
+access_product_user,access_product_user,model_logistics_product,base.group_user,1,1,1,1
+

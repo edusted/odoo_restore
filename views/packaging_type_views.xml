@@ -33,5 +33,5 @@
     </record>
 
     
-    <menuitem id="menu_logistics_packaging_type" parent="menu_logistics_configuration" name="Packaging Types" action="action_packaging_type"/>
+
 </odoo>

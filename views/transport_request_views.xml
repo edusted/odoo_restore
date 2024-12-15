@@ -1,49 +1,104 @@
 <odoo>
-    <!-- Kanban View -->
-    <record id="view_transport_request_kanban" model="ir.ui.view">
-        <field name="name">transport.request.kanban</field>
-        <field name="model">logistics.transport_request</field>
-        <field name="arch" type="xml">
-            <kanban>
-                <!-- Specify fields available in the view -->
-                <field name="name"/>
-                <field name="request_type"/>
-                <field name="sender_id"/>
-                <field name="receiver_id"/>
-                <field name="package_type_id"/>
-                <field name="priority_id"/>
-                <field name="total_weight"/>
-                <field name="total_volume"/>
+    <record id="view_transport_request_form" model="ir.ui.view">
+    <field name="name">transport.request.form</field>
+    <field name="model">logistics.transport_request</field>
+    <field name="arch" type="xml">
+        <form string="Transport Request">
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_create_invoice" type="object" string="Invoices" icon="fa-file-invoice-dollar"/>
+<!--                    <button name="action_create_total_cost" type="object" string="Total Cost" icon="fa-map-marked-alt"/>-->
+                </div>
+                <group>
+                    <group>
+                        <field name="name" readonly="1" string="Request Number"/>
+                        <field name="is_own_transport" string="Own Transport"/>
+                        <field name="request_type_id" string="Request Type"/>
+                        <field name="sender_id" string="Sender"/>
+                        <field name="sender_contact_id" string="Sender Contact"/>
+                        <field name="receiver_id" string="Receiver"/>
+                        <field name="receiver_contact_id" string="Receiver Contact"/>
+                        <field name="responsible_manager_id" string="Responsible Manager"/>
+                        <field name="responsible_logistician_id" string="Responsible Logistician"/>
+                        <field name="comments" string="Comments" widget="text"/>
+                    </group>
+                    <group>
+                        <field name="request_date" string="Request Date"/>
+                        <field name="package_type_id" string="Package Type"/>
+                        <field name="package_quantity" string="Package Quantity"/>
+<!--                        <field name="total_weight" string="Total Weight"/>-->
+<!--                        <field name="total_volume" string="Total Volume" readonly="1"/>-->
+                        <field name="has_carry_service" string="Carry Service"/>
+                        <field name="floor_number" string="Floor Number"/>
+                        <field name="priority_id" string="Priority"/>
+                        <field name="delivery_date" string="Delivery Date"/>
+                        <field name="delivery_time_start" string="Delivery Time From"/>
+                        <field name="delivery_time_end" string="Delivery Time To"/>
+                    </group>
+                </group>
+                <notebook>
+                   <page string = "Pickup/Delivery">
+                         <group>
+                             <field name = "transport_type"/>
+                             <field name = "date_time"/>
+                             <field name = "partner_id"/>
+                             <field name = "street"/>
+                             <field name = "city"/>
+                             <field name = "zip_code"/>
+                             <field name = "country_id"/>
+                         </group>
+                    </page>
+                    <page string = "Carriers" >
+                        <group>
+                            <field name = "carrier"/>
+                            <field name = "delivery"/>
+                            <field name = "cost"/>
+                            <field name = "service_type"/>
+                        </group>
+                    </page>
+                    <page string = "Cost">
+                        <group>
+                            <field name = "expense_category"/>
+<!--                            <field name = "cost_exp"/>-->
+<!--                            <field name = "comments_exp"/>-->
+                        </group>
+                    </page>
+                    <page string="Request details">
+                        <group>
+                            <field name = "product_id"/>
+<!--                            <field name = "weight"/>-->
+<!--                            <field name = "quantity"/>-->
+<!--                            <field name = "dimensions" placeholder="Enter dimensions in WxHxL format" />-->
+<!--                            <field name = "total_weight_req"/>-->
+<!--                            <field name = "comments_req"/>-->
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
 
-                <!-- Template for displaying cards -->
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click o_kanban_card">
-                            <div class="o_kanban_primary_bottom">
-                                <strong><field name="name"/></strong>
-                            </div>
-                            <div><b>Request Type:</b> <field name="request_type"/></div>
-                            <div><b>Sender:</b> <field name="sender_id"/></div>
-                            <div><b>Receiver:</b> <field name="receiver_id"/></div>
-                            <div><b>Package Type:</b> <field name="package_type_id"/></div>
-                            <div><b>Priority:</b> <field name="priority_id"/></div>
-                            <div><b>Total Weight:</b> <field name="total_weight"/> kg</div>
-                            <div><b>Total Volume:</b> <field name="total_volume"/> m³</div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
+
+
+    <record id="seq_transport_request" model="ir.sequence">
+        <field name="name">Transport Request Sequence</field>
+        <field name="code">logistics.transport_request</field>
+        <field name="prefix">TR</field>
+        <field name="padding">5</field>
+<!--        <field name="number_increment">1</field>-->
+<!--        <field name="number_next">1</field>-->
     </record>
 
-    <!-- Action to open the Kanban View -->
+
     <record id="action_transport_request" model="ir.actions.act_window">
         <field name="name">Transport Requests</field>
         <field name="res_model">logistics.transport_request</field>
-        <field name="view_mode">kanban,tree,form</field>
-        <field name="view_id" ref="view_transport_request_kanban"/>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="view_id" ref="view_transport_request_form"/>
     </record>
 
-    <!-- Menu Item -->
-     <menuitem id="menu_logistics_transport_requests" parent="menu_logistics_root" name="Transport Requests" action="action_transport_request"/>
+
+
 </odoo>

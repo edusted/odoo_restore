@@ -1,0 +1,47 @@
+<odoo>
+
+    <record id="view_product_form" model="ir.ui.view">
+        <field name="name">product.form</field>
+        <field name="model">logistics.product</field>
+        <field name="arch" type="xml">
+            <form string="Product">
+                <sheet>
+                    <group>
+                        <field name = "name_p"/>
+                        <field name = "weight_p"/>
+                        <field name = "quantity_p"/>
+                        <field name = "dimensions_p" placeholder="Enter dimensions in WxHxL format" />
+                        <field name = "total_weight_p"/>
+                        <field name = "comments_p"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_product_tree" model="ir.ui.view">
+        <field name="name">product.tree</field>
+        <field name="model">logistics.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name = "name_p"/>
+                <field name = "weight_p"/>
+                <field name = "quantity_p"/>
+                <field name = "dimensions_p" placeholder="Enter dimensions in WxHxL format" />
+                <field name = "total_weight_p"/>
+                <field name = "comments_p"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_product" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">logistics.product</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+</odoo>
